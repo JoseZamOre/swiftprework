@@ -25,7 +25,7 @@ The following **additional** features are implemented:
 ## Notes
 
 Though the given program does not operate, there have been many difficulties to make the program work again. My primary issue came about when I was trying to make the Settings window. I kept seeing this error on thefollowing line:
-class AppDelegate: UIResponder, UIApplicationDelegate {
+*class AppDelegate: UIResponder, UIApplicationDelegate {*
 After some research, I have discovered the problem (Thread 1: signal SIGABRT) and how to fix it. Though it seems that I could not pinpoint where there was a disconnection in my "ViewController". I attempted to recreate the program from scratch but came across SIGABRT again, for an unknown reason. When I had checked back to my original program, it suddenly had stopped working.
 
 ## License
