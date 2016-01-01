@@ -1,0 +1,66 @@
+//
+//  ViewController.swift
+//  preworkswift
+//
+//  Created by Jose Zamora Orellana on 12/30/15.
+//  Copyright © 2015 Jose Zamora Orellana. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var twoTip: UILabel!
+    @IBOutlet weak var threeTip: UILabel!
+    @IBOutlet weak var fourTip: UILabel!
+    @IBOutlet weak var fiveTip: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        tipLabel.text = "$0.00"
+        totalLabel.text = "$0.00"
+        twoTip.text = "$0.00"
+        threeTip.text = "$0.00"
+        fourTip.text = "$0.00"
+        fiveTip.text = "$0.00"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func onEditingChanged(sender: AnyObject) {
+        
+        var tipPercents = [0.18, 0.2, 0.25]
+        var tipPercent = tipPercents[tipControl.selectedSegmentIndex]
+        
+        var billAmount = NSString(string: billField.text!).doubleValue
+        var tip = billAmount * tipPercent
+        var total = billAmount + tip
+        
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+        
+        twoTip.text = String(format: "$%.2f", tip/2)
+        threeTip.text = String(format: "$%.2f", tip/3)
+        fourTip.text = String(format: "$%.2f", tip/4)
+        fiveTip.text = String(format: "$%.2f", tip/5)
+        
+    }
+    
+    @IBAction func onTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
+
+}
+
